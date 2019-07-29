@@ -1,0 +1,56 @@
+Traveler User Story:
+
+Home Page
+
+As a traveler, I want to see information describing insurance that I can purchase for my flight, so that I know what product is being sold.
+
+As a traveer, I want to see a form that allows me to input my flight number, departure date, and a button to search, so that I can select the insurance for that flight.
+
+New Page - purchasing insurance
+
+As a traveler, I want to see a summary of my flight that I’m thinking of purchasing insurance for, so that I can make an informed decision about whether or not I want to actually purchase the insurance.
+
+As a traveler, I want to see an option that I can click on, so that I can select a specific insurance policy for my flight.
+
+As a traveler, I want to see a submit button, so that I can finalize my purchase.
+
+Login/Registration Page
+
+As a traveler, I want to see a form that allows me to register my email and password, so that I can create an account linked to my policies.
+
+As a traveler, I want to see on the form that I can log in to my existing account.
+
+As a traveler, I want to see a submit button, so I know that my account will be created.
+
+Show Page - all their flights
+
+As a traveler, I want to see all policies, so that I can stay informed.
+
+
+Investor User Story:
+
+Login/Registration/Home
+
+As an investor, I want to see forms to allow me to register or log in as a current investor, so that I can purchase new bonds or manage current portfolio.
+
+As a new investor, I want to see a title or info about what product is being sold on this site.
+
+New Page
+
+As an investor, I want to see a list of bonds that you can purchase, so that you can add them to your portfolio.
+
+As an investor, I want to see a submit button that allows me to finalize my purchase, so that I can add it officially to my portfolio.
+
+Show Page
+
+As an investor, I want to see my account information and my current portfolio bonds, so that they can be managed.
+
+As an investor, I want to see a button that allows me to edit my account information.
+
+As an investor, I want to see a button that allows me to add additional bonds to my portfolio.
+
+As an investor, I want to see buttons that allow me to “sell” my bond(s) to another investor, so that I can get rid of bonds that I don’t want in my portfolio. 
+
+Edit Page
+
+As an investor, I want to see my current email, password, and a separate field to change my information, so that I can change my information.
