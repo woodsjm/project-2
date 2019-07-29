@@ -13,11 +13,11 @@ require('./db/db')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
 
-app.use(session({
-	secret: SESSION_SECRET,
-	resave: false,
-	saveUninitialized: false
-}))
+// app.use(session({
+// 	secret: SESSION_SECRET,
+// 	resave: false,
+// 	saveUninitialized: false
+// }))
 
 
 app.listen(PORT, () => {
