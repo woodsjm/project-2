@@ -10,10 +10,17 @@ router.get('/login', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
 	const logTraveler = await Traveler.findOne({email: req.body.email})
-
 	console.log(logTraveler);
 
-	res.redirect('/traveler')
+	if (!logTraveler) {
+		console.log('user does not exist!');
+
+		res.redirect('/traveler/login')
+	} else {
+		res.redirect('/traveler')
+		
+	}
+
 })
 
 // REGISTER ROUTE
@@ -37,7 +44,6 @@ router.post('/register', async (req, res, next) => {
 	} catch (err) {
 		next(err)
 	}
-
 })
 
 
@@ -45,11 +51,30 @@ router.post('/register', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
 
 	try {
+
 		res.render('traveler/home.ejs')
 
 	} catch (err) {
 		next(err)
 	}
+})
+
+// SHOW ROUTE
+router.get('/:id', async (req, res, next) => {
+
+	try {
+
+		const foundTraveler = await Traveler.findById(req.params.id)
+		console.log(foundTraveler);
+		res.render('traveler/show.ejs', {
+			traveler: foundTraveler
+		})
+
+	} catch (err) {
+		next(err)
+	}
+
+
 })
 
 
