@@ -2,14 +2,17 @@ const express = require('express')
 const router = express()
 const Investor = require('../models/investor')
 
+// New Investor Route
 router.get('/new', (req, res) => {
   res.render('investor/new.ejs');
 });
+
 
 router.get('/login', (req, res) => {
   res.render('investor/login.ejs');
 });
 
+//Investor Login Route
 router.post('/login', async (req, res, next) => {
     try {
       const logInvestor = await Investor.findOne({email: req.body.email})
@@ -25,6 +28,8 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
+
+// Create Investor Route
 router.post('/new', async (req, res, next) => {
     try {
       const createdInvestor = await Investor.create({
@@ -38,8 +43,21 @@ router.post('/new', async (req, res, next) => {
     }
 });
 
+// Edit Investor Route
+router.get('/:id/edit', async (req, res, next) => {
+  try {
+    const foundInvestor = await Investor.findById(req.params.id);
+
+    res.render('investor/edit.ejs', {
+      investor: foundInvestor
+    });
+  } catch (err) {
+    next(err)
+  }
+});
 
 
+//Show Investor Route
 router.get('/show/:id', async (req, res, next) => {
   try {
     const foundInvestor = await Investor.findById(req.params.id)
