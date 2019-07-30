@@ -17,10 +17,8 @@ router.post('/login', async (req, res, next) => {
 
 		res.redirect('/traveler/login')
 	} else {
-		res.redirect('/traveler')
-		
+		res.redirect('/traveler/' + logTraveler.id)
 	}
-
 })
 
 // REGISTER ROUTE
@@ -39,7 +37,7 @@ router.post('/register', async (req, res, next) => {
 
 		console.log(createdTraveler);
 
-		res.redirect('/traveler')
+		res.redirect('/traveler/' + createdTraveler.id)
 
 	} catch (err) {
 		next(err)
@@ -47,7 +45,7 @@ router.post('/register', async (req, res, next) => {
 })
 
 
-// INDEX ROUTE
+// INDEX/HOME ROUTE -- search for flights
 router.get('/', async (req, res, next) => {
 
 	try {
@@ -59,7 +57,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-// SHOW ROUTE
+// SHOW ROUTE -- see all flights
 router.get('/:id', async (req, res, next) => {
 
 	try {
