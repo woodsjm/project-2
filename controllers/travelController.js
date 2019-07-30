@@ -21,6 +21,16 @@ router.post('/login', async (req, res, next) => {
 	}
 })
 
+// LOGOUT ROUTE
+router.post('/logout', (req, res, next) => {
+	try {
+		res.redirect('/traveler/login')
+
+	} catch (err) {
+		next(err)
+	}
+})
+
 // REGISTER ROUTE
 router.get('/register', async (req, res, next) => {
 	res.render('traveler/register.ejs')
@@ -44,13 +54,30 @@ router.post('/register', async (req, res, next) => {
 	}
 })
 
-
-// INDEX/HOME ROUTE -- search for flights
-router.get('/', async (req, res, next) => {
+// NEW ROUTE -- see flights to buy
+router.get('/:id/new', async (req, res, next) => {
 
 	try {
+		const foundTraveler = await Traveler.findById(req.params.id)
 
-		res.render('traveler/home.ejs')
+		res.render('traveler/new.ejs', {
+			traveler: foundTraveler
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+
+
+// INDEX/HOME ROUTE -- search for flights
+router.get('/:id/findflights', async (req, res, next) => {
+
+	try {
+		const foundTraveler = await Traveler.findById(req.params.id)
+
+		res.render('traveler/home.ejs', {
+			traveler: foundTraveler
+		})
 
 	} catch (err) {
 		next(err)
