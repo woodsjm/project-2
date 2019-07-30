@@ -10,6 +10,20 @@ router.get('/login', (req, res) => {
   res.render('investor/login.ejs');
 });
 
+router.post('/login', async (req, res, next) => {
+    try {
+      const logInvestor = await Investor.findOne({email: req.body.email})
+
+      if (!logInvestor) {
+        console.log("this account doesn't exit")
+        res.redirect('/investor/login')
+      } else {
+        res.redirect('/investor/show/' + logInvestor.id)
+      }
+    } catch (err) {
+      next(err)
+    }
+});
 
 router.post('/new', async (req, res, next) => {
     try {
@@ -23,6 +37,8 @@ router.post('/new', async (req, res, next) => {
       next(err)
     }
 });
+
+
 
 router.get('/show/:id', async (req, res, next) => {
   try {
