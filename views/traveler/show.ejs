@@ -6,5 +6,17 @@
 <body>
 
 	<h1>Traveler Show Page</h1>
+
+	<h2>Your Flights/Policies</h2>
+
+	<%if (!traveler.products) {%>
+		<p>You have no flights</p>
+	<%}%>
+
+	<a href="/traveler/<%=traveler._id%>/findflights">Search for flights</a>
+
+	<form method="POST" action="/traveler/logout">
+		<button>Logout</button>
+	</form>
 </body>
 </html>
