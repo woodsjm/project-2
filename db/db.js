@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const connectionString = 'mongodb://localhost/delay'
+const connectionString = 'mongodb://localhost/flight-delay'
 
 mongoose.connect(connectionString, {
 	useNewUrlParser: true

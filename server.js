@@ -8,6 +8,7 @@ const superagent = require('superagent')
 const app = express()
 const PORT = 3000
 
+
 require('./db/db')
 
 
@@ -20,7 +21,6 @@ app.use(methodOverride('_method'))
 // 	resave: false,
 // 	saveUninitialized: false
 // }))
-
 
 const adminController = require('./controllers/adminController')
 app.use('/admin', adminController)
@@ -57,5 +57,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
 	console.log(`listening on PORT ${PORT}`);
-  console.dir(process.env)
+  // console.dir(process.env)
 })
