@@ -21,6 +21,17 @@ app.use(methodOverride('_method'))
 // 	saveUninitialized: false
 // }))
 
+
+const adminController = require('./controllers/adminController')
+app.use('/admin', adminController)
+
+const investController = require('./controllers/investController')
+app.use('/investor', investController)
+
+const travelController = require('./controllers/travelController')
+app.use('/traveler', travelController)
+
+
 app.get('/', (req, res, next) => {
   //const url = `https://api.openweathermap.org/data/2.5/weather?zip=60601&units=imperial&appid=${process.env.API_KEY}`
   const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=1015`
