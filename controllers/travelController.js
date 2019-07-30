@@ -9,7 +9,11 @@ router.get('/login', async (req, res, next) => {
 })
 
 router.post('/login', async (req, res, next) => {
-	
+	const logTraveler = await Traveler.findOne({email: req.body.email})
+
+	console.log(logTraveler);
+
+	res.redirect('/traveler')
 })
 
 // REGISTER ROUTE
@@ -28,13 +32,14 @@ router.post('/register', async (req, res, next) => {
 
 		console.log(createdTraveler);
 
-		res.redirect('/traveler/home.ejs')
+		res.redirect('/traveler')
 
 	} catch (err) {
 		next(err)
 	}
 
 })
+
 
 // INDEX ROUTE
 router.get('/', async (req, res, next) => {
