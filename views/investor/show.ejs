@@ -7,16 +7,32 @@
 
 	<h1>Investor Overview Page</h1>
 
-  <h2>Current Offerings</h2>
 
-  <ul>
-    <%for (let i = 0; i < bonds.length; i++) {%>
-      <li><%=bonds[i]%></li>
-    <%}%>
-  </ul>
+<h2>Current Offering</h2>
+    <ul>
+      <%for (let i = 0; i < bonds.length; i++) {%>
+      <%if (bonds[i].issued === false) {%>
+        <li><%=bonds[i]%></li>
+        <form action="/bonds?_method=PUT" method="POST">
+          <input type="hidden" name="bondId" value="<%=bonds[i]._id%>">
+          <input type="hidden" name="investorId" value="<%=investor._id%>">
+          <button>Add</button>
+        </form>
+      <%}%>
+     <%}%>
+    </ul>
+  <p>----------------------</p>
+  <h2>Current Portfolio</h2>
+    <ul>
+      <%for (let i = 0; i < bonds.length; i++) {%>
+      <%if (bonds[i].issued === true && bonds[i].user == investor.id) {%>
+        <li><%=bonds[i]%></li>
+      <%}%>
+     <%}%>
+    </ul>
 
-  <aside>Current Portfolio</aside>
-
+ <!-- && bonds[i].user === investor._id -->
+ <!-- bonds[i].issued === true &&  -->
   <a href="/investor/<%=investor._id%>/edit">Edit Account</a>
 </body>
 </html>

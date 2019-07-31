@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express()
+const router = express.Router()
 const Investor = require('../models/investor')
 const Bond = require('../models/bonds')
 const Policy = require('../models/flightPolicy')
@@ -74,19 +74,24 @@ router.delete('/:id', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
+    
     const updatedInvestor = await Investor.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
+    
     res.redirect('/investor/show/' + updatedInvestor.id);
   } catch (err) {
     next(err)
   }
 });
 
+//  
+
 //Show Investor Route
 router.get('/show/:id', async (req, res, next) => {
   try {
     const foundInvestor = await Investor.findById(req.params.id);
     const currentOffering = await Bond.find({});
+
 
 
     console.log(foundInvestor);

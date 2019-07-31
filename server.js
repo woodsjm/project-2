@@ -31,6 +31,9 @@ app.use('/investor', investController)
 const travelController = require('./controllers/travelController')
 app.use('/traveler', travelController)
 
+const bondController = require('./controllers/bondController')
+app.use('/bonds', bondController)
+
 
 app.get('/', (req, res, next) => {
   //const url = `https://api.openweathermap.org/data/2.5/weather?zip=60601&units=imperial&appid=${process.env.API_KEY}`

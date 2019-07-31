@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express()
+const router = express.Router()
 const Admin = require('../models/admin')
 const Bond = require('../models/bonds')
 const Policy = require('../models/flightPolicy')
