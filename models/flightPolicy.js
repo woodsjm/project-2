@@ -6,11 +6,11 @@ const flightPolicySchema = new mongoose.Schema({
 		departureDate: Date
 	}, 
 	user: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Investor'
 	},
 	bond: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Bonds'
 	},
 	available: Boolean,

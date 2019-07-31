@@ -1,12 +1,16 @@
 const mongoose = require('mongoose')
 
 const bondSchema = new mongoose.Schema({
+	bondName: String,
 	principle: Number,
-	maturity: Number,
-	coupon: Number,
-	date: Date,
+	maturityInMonths: Number,
+	monthlyCoupon: Number,
+	date: {
+		type: Date,
+		default: Date.now
+	},
 	user: {
-		type: Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Investor'
 	},
 	issued: {

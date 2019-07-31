@@ -7,6 +7,14 @@
 
 	<h1>Admin Create Bond Page</h1>
 
+	<form method="POST" action="/admin">
+		Bond name: <input type="text" name="bondName" placeholder="bond name">
+		Principle: <input type="number" name="principle">
+		Maturity: <input type="number" name="maturityInMonths" placeholder="months">
+		Coupon: <input type="number" name="monthlyCoupon">
+		<button>Create Bond</button>
+	</form>
+
 	<a href="">Create New Policies</a>
 
 </body>
