@@ -61,7 +61,16 @@ router.post('/register', async (req, res, next) => {
 	}
 })
 
-// NEW ROUTE
+// NEW BOND ROUTE
+router.get('/newbond', async (req, res, next) => {
+	try {
+
+		res.render('admin/new.ejs')
+
+	} catch (err) {
+		next(err)
+	}
+})
 
 
 
