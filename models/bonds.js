@@ -4,7 +4,6 @@ const bondSchema = new mongoose.Schema({
 	principle: Number,
 	maturity: Number,
 	coupon: Number,
-	flightPolicies: [Object],
 	date: Date,
 	user: {
 		type: Schema.Types.ObjectId,

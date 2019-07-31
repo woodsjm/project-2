@@ -9,6 +9,10 @@ const flightPolicySchema = new mongoose.Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Investor'
 	},
+	bond: {
+		type: Schema.Types.ObjectId,
+		ref: 'Bonds'
+	},
 	available: Boolean,
 	date: Date
 })
