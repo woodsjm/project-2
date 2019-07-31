@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Traveler = require('../models/traveler')
 const superagent = require('superagent')
+const Policy = require('../models/flightPolicy')
 
 
 // LOGIN ROUTE
@@ -60,6 +61,8 @@ router.get('/:id/new', async (req, res, next) => {
 
 	try {
 		const foundTraveler = await Traveler.findById(req.params.id)
+		// const foundPolicy = await Policy.find({flightInfo.number: req.query.number})
+		console.dir(foundPolicy);
 
 		const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
 		superagent.get(url).end((error, response) => {
@@ -67,11 +70,12 @@ router.get('/:id/new', async (req, res, next) => {
 			else {
 				const dataAsObj = JSON.parse(response.text)
 
-				res.send(dataAsObj)
+				// res.send(dataAsObj)
 
-				// res.render('traveler/new.ejs', {
-				// 	traveler: foundTraveler
-				// })
+				res.render('traveler/new.ejs', {
+					traveler: foundTraveler,
+					flightData: dataAsObj
+				})
 			}
 		})
 
