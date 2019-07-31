@@ -9,6 +9,12 @@
 
   <h2>Current Offerings</h2>
 
+  <ul>
+    <%for (let i = 0; i < bonds.length; i++) {%>
+      <li><%=bonds[i]%></li>
+    <%}%>
+  </ul>
+
   <aside>Current Portfolio</aside>
 
   <a href="/investor/<%=investor._id%>/edit">Edit Account</a>

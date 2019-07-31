@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express()
 const Investor = require('../models/investor')
+const Bond = require('../models/bonds')
+const Policy = require('../models/flightPolicy')
 
 // New Investor Route
 router.get('/new', (req, res) => {
@@ -83,10 +85,14 @@ router.put('/:id', async (req, res, next) => {
 //Show Investor Route
 router.get('/show/:id', async (req, res, next) => {
   try {
-    const foundInvestor = await Investor.findById(req.params.id)
+    const foundInvestor = await Investor.findById(req.params.id);
+    const currentOffering = await Bond.find({});
+
+
     console.log(foundInvestor);
     res.render('investor/show.ejs', {
-      investor: foundInvestor
+      investor: foundInvestor,
+      bonds: currentOffering
     });
   } catch (err) {
     next(err)

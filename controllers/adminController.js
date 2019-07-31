@@ -125,6 +125,7 @@ router.post('/newpolicy/create', async (req, res, next) => {
 		console.log(createdPolicy, '<-- createdPolicy');
 		console.log('---------------');
 
+		res.redirect('/admin');
 	} catch (err) {
 		next(err)
 	}
