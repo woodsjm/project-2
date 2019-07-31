@@ -77,9 +77,6 @@ router.get('/newbond', async (req, res, next) => {
 // CREATE BOND
 router.post('/', async (req, res, next) => {
 	try {
-		console.log(req.body, '<-- req.body');
-		console.log('---------------------');
-
 		const newBond = {}
 		newBond.bondName = req.body.bondName;
 		newBond.principle = req.body.principle;
@@ -115,9 +112,6 @@ router.get('/newpolicy', async (req, res, next) => {
 // CREATE POLICY
 router.post('/newpolicy/create', async (req, res, next) => {
 	try {
-
-		console.log(req.body, '<-- req.body');
-
 		const newPolicy = {
 			flightInfo: {
 				number: req.body.number,
@@ -126,15 +120,10 @@ router.post('/newpolicy/create', async (req, res, next) => {
 			bond: req.body.bondId
 		}
 
-		console.log(newPolicy, '<-- newPolicy');
-
 		const createdPolicy = await Policy.create(newPolicy);
+		console.log('---------------');
 		console.log(createdPolicy, '<-- createdPolicy');
-		console.log(createdPolicy.number, '<-- number');
-		console.log(createdPolicy.departureDate, '<-- departureDate');
-		console.log(createdPolicy.bond, '<-- bond');
-
-
+		console.log('---------------');
 
 	} catch (err) {
 		next(err)
@@ -144,11 +133,14 @@ router.post('/newpolicy/create', async (req, res, next) => {
 
 
 // SHOW ROUTE
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	
 	try {
+		const allBonds = await Bond.find({})
 
-		res.render('admin/show.ejs')
+		res.render('admin/show.ejs', {
+			bonds: allBonds
+		})
 
 	} catch (err) {
 		next(err)

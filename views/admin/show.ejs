@@ -7,6 +7,13 @@
 
 	<h1>Admin Show Page</h1>
 
-	<a href="/admin/newbond">Create new bond</a>
+	<ul>
+		<%for (let i = 0; i < bonds.length; i++) {%>
+			<li><%=bonds[i]%></li>
+		<%}%>
+	</ul>
+
+	<a href="/admin/newbond">Create new bond</a><br/>
+	<a href="/admin/newpolicy">Create new policy</a>
 </body>
 </html>
