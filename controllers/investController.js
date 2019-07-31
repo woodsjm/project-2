@@ -56,6 +56,28 @@ router.get('/:id/edit', async (req, res, next) => {
   }
 });
 
+// Destroy Investor Route
+router.delete('/:id', async (req, res, next) => {
+  try {
+    console.log(req.params.id)
+    const deletedInvestor = await Investor.findOneAndDelete(req.params.id);
+    // const removedBonds = await Bond.remove()
+
+    res.redirect('/investor/new.ejs');
+  } catch (err) {
+    next(err)
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const updatedInvestor = await Investor.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+    res.redirect('/investor/show/' + updatedInvestor.id);
+  } catch (err) {
+    next(err)
+  }
+});
 
 //Show Investor Route
 router.get('/show/:id', async (req, res, next) => {
@@ -69,6 +91,8 @@ router.get('/show/:id', async (req, res, next) => {
     next(err)
   }
 });
+
+
 
 /*router.post('/login', async (req, res, next) => {
   try {

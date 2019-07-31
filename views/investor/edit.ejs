@@ -7,6 +7,19 @@
 
 	<h1>Investor Edit Page</h1>
 
-  
+  <h2>Email and Password</h2>
+  <form action="investor/<%=investor._id%>?_method=PUT" method="POST">
+        <input type="text" name="email" value="<%=investor.email%>"/><br/>
+        <input type="text" name="password" value="<%=investor.password%>"/><br/>
+      </form><br />
+
+  <form action="/investor/login" method="POST">
+    <button>Delete Account</button>
+  </form>
+
+
+
+
+
 </body>
 </html>
