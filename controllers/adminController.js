@@ -2,6 +2,7 @@ const express = require('express')
 const router = express()
 const Admin = require('../models/admin')
 const Bond = require('../models/bonds')
+const Policy = require('../models/flightPolicy')
 
 
 // LOGIN ROUTE
@@ -66,7 +67,7 @@ router.post('/register', async (req, res, next) => {
 router.get('/newbond', async (req, res, next) => {
 	try {
 
-		res.render('admin/new.ejs')
+		res.render('admin/new-bonds.ejs')
 
 	} catch (err) {
 		next(err)
@@ -92,6 +93,48 @@ router.post('/', async (req, res, next) => {
 
 
 		res.redirect('/admin')
+
+	} catch (err) {
+		next(err)
+	}
+})
+
+// NEW POLICY PAGE ROUTE
+router.get('/newpolicy', async (req, res, next) => {
+
+	try {
+		const allBonds = await Bond.find({})
+		res.render('admin/new-policy.ejs', {
+			bonds: allBonds
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+
+// CREATE POLICY
+router.post('/newpolicy/create', async (req, res, next) => {
+	try {
+
+		console.log(req.body, '<-- req.body');
+
+		const newPolicy = {
+			flightInfo: {
+				number: req.body.number,
+				departureDate: req.body.departureDate
+			},
+			bond: req.body.bondId
+		}
+
+		console.log(newPolicy, '<-- newPolicy');
+
+		const createdPolicy = await Policy.create(newPolicy);
+		console.log(createdPolicy, '<-- createdPolicy');
+		console.log(createdPolicy.number, '<-- number');
+		console.log(createdPolicy.departureDate, '<-- departureDate');
+		console.log(createdPolicy.bond, '<-- bond');
+
+
 
 	} catch (err) {
 		next(err)
