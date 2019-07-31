@@ -13,7 +13,7 @@
         <input type="text" name="password" value="<%=investor.password%>"/><br/>
       </form><br />
 
-  <form action="/investor/login" method="POST">
+  <form action="/investor/<%=investor._id%>?_method=DELETE" method="POST">
     <button>Delete Account</button>
   </form>
 

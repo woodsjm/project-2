@@ -62,8 +62,9 @@ router.delete('/:id', async (req, res, next) => {
     console.log(req.params.id)
     const deletedInvestor = await Investor.findOneAndDelete(req.params.id);
     // const removedBonds = await Bond.remove()
+    console.log(req.params.id)
 
-    res.redirect('/investor/new.ejs');
+    res.redirect('/investor/new');
   } catch (err) {
     next(err)
   }
