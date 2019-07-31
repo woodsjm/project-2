@@ -78,15 +78,18 @@ router.post('/', async (req, res, next) => {
 	try {
 		console.log(req.body, '<-- req.body');
 		console.log('---------------------');
-		const createdBond = await Bond.create({
-			bondName: req.body.bondName,
-			principle: req.body.principle,
-			maturity: req.body.maturityInMonths,
-			coupon: req.body.monthlyCoupon
-		})
+
+		const newBond = {}
+		newBond.bondName = req.body.bondName;
+		newBond.principle = req.body.principle;
+		newBond.maturity = req.body.maturity;
+		newBond.coupon = req.body.coupon;
+
+		const createdBond = await Bond.create(newBond)
 		console.log('-----------');
 		console.log(createdBond, '<-- createdBond');
 		console.log('------------');
+
 
 		res.redirect('/admin')
 

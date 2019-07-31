@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const bondSchema = new mongoose.Schema({
 	bondName: String,
 	principle: Number,
-	maturityInMonths: Number,
-	monthlyCoupon: Number,
+	maturity: Number,
+	coupon: Number,
 	date: {
 		type: Date,
 		default: Date.now
