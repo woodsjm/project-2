@@ -7,11 +7,23 @@
 
 	<h1>Admin Show Page</h1>
 
-	<ul>
-		<%for (let i = 0; i < bonds.length; i++) {%>
-			<li><%=bonds[i]%></li>
-		<%}%>
-	</ul>
+  <h2>Bonds Not Yet Issued</h2>
+  	<ul>
+  		<%for (let i = 0; i < bonds.length; i++) {%>
+      <%if (bonds[i].issued === false) {%>
+  			<li><%=bonds[i]%></li>
+  		<%}%>
+     <%}%>
+  	</ul>
+  <p>----------------------</p>
+  <h2>Bonds Already Issued</h2>
+    <ul>
+      <%for (let i = 0; i < bonds.length; i++) {%>
+      <%if (bonds[i].issued === true) {%>
+        <li><%=bonds[i]%></li>
+      <%}%>
+     <%}%>
+    </ul>
 
 	<a href="/admin/newbond">Create new bond</a><br/>
 	<a href="/admin/newpolicy">Create new policy</a>
