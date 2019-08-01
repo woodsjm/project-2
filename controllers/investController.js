@@ -91,7 +91,7 @@ router.post('/new', async (req, res, next) => {
 // Edit Investor Route
 router.get('/:id/edit', async (req, res, next) => {
   try {
-    if (req.session.loggedIn == true && req.session.investor == true) {
+    if (req.session.investor == true) {
       const foundInvestor = await Investor.findById(req.params.id);
 
       res.render('investor/edit.ejs', {
@@ -135,7 +135,7 @@ router.put('/:id', async (req, res, next) => {
 router.get('/show/:id', async (req, res, next) => {
   try {
 
-    if (req.session.loggedIn == true && req.session.investor == true) {
+    if (req.session.investor == true) {
       const foundInvestor = await Investor.findById(req.params.id);
       const currentOffering = await Bond.find({});
 
