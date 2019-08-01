@@ -43,25 +43,10 @@ app.use('/policy', policyController)
 app.use(express.static('public'));
 
 
-app.get('/', (req, res, next) => {
-  const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=1015`
-  console.dir(url);
-  superagent
-    .get(url)
-    .end((error, response) => {
-      if(error) next(error);
-      else {
-        const dataAsObj = JSON.parse(response.text)
-        console.dir(dataAsObj)
 
-        res.send('API IS HERE')
-      }
-    })
-});
-
-
+// HOME PAGE ROUTE
 app.get('/', (req, res) => {
-  res.render('test.ejs');
+  res.render('homepage.ejs');
 });
 
 app.listen(PORT, () => {
