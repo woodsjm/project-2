@@ -3,6 +3,7 @@ const router = express.Router()
 const Traveler = require('../models/traveler')
 const superagent = require('superagent')
 const Policy = require('../models/flightPolicy')
+const bcrypt = require('bcryptjs')
 
 
 // LOGIN ROUTE
@@ -79,8 +80,8 @@ router.get('/:id/new', async (req, res, next) => {
 	try {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
-			// const foundPolicy = await Policy.find({flightInfo.number: req.query.number})
-			console.dir(foundPolicy);
+			const allPolicies = await Policy.find({})
+			const foundPolicy = await Policy.findOne({number: req.query.number})
 
 			const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
 			superagent.get(url).end((error, response) => {

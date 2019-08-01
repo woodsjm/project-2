@@ -170,13 +170,10 @@ router.get('/newpolicy', async (req, res, next) => {
 // CREATE POLICY
 router.post('/newpolicy/create', async (req, res, next) => {
 	try {
-		const newPolicy = {
-			flightInfo: {
-				number: req.body.number,
-				departureDate: req.body.departureDate
-			},
-			bond: req.body.bondId
-		}
+		const newPolicy = {}
+
+		newPolicy.number = req.body.number
+		newPolicy.bond = req.body.bondId
 
 		const createdPolicy = await Policy.create(newPolicy);
 		console.log('---------------');
