@@ -12,20 +12,17 @@
 
 	<h1>Traveler Create Page</h1>
 
-  <div>
-      <p><%=flightData[0].departureTime%></p>
-      <p><%=flightData[0].departureIata%></p>
-      <p><%=flightData[0].flightNumber%></p>
-  </div>
-
-	<%=policy.number%>
+	<div>
+		<p><%=flightData[0].flightNumber%></p>
+		<p><%=flightData[0].departureIata%></p>
+		<p><%=flightData[0].departureTime%></p>
+	</div>
 
 
 	<form method="POST" action="/policy?_method=PUT">
 		<input type="hidden" name="travelerId" value="<%=traveler._id%>">
-    <input type="hidden" name="policyId" value="<%=policy._id%>">
+	    <input type="hidden" name="policyId" value="<%=policy._id%>">
 		<button>Purchase</button>
-
 	</form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
