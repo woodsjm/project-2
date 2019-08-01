@@ -7,11 +7,19 @@
 
 	<h1>Traveler Create Page</h1>
 
-	<%=flightData[0].flightNumber%>
+	<%for (let i = 0; i < policies.length; i++) {%>
+		<%if (policies[i].number) {%>
+			<%=flightData[0].flightNumber%>
+		<%} else {%>
+			<p>Not a valid flight</p>
+		<%}%>
+	<%}%>
+
 
 	<form method="GET" action="/traveler/<%=traveler._id%>">
 		
 		<button>Purchase</button>
+
 	</form>
 </body>
 </html>

@@ -80,6 +80,7 @@ router.get('/:id/new', async (req, res, next) => {
 	try {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
+			const allPolicies = await Policy.find({})
 			const foundPolicy = await Policy.findOne({number: req.query.number})
 
 			if (foundPolicy) {
@@ -94,6 +95,7 @@ router.get('/:id/new', async (req, res, next) => {
 
 						res.render('traveler/new.ejs', {
 							traveler: foundTraveler,
+							policies: allPolicies,
 							flightData: dataAsObj
 						})
 					}
