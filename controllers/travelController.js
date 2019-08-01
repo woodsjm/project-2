@@ -14,12 +14,23 @@ router.post('/login', async (req, res, next) => {
 	const logTraveler = await Traveler.findOne({email: req.body.email})
 	console.log(logTraveler);
 
-	if (!logTraveler) {
-		console.log('user does not exist!');
+	if (logTraveler) {
 
-		res.redirect('/traveler/login')
+		if (bcrypt.compareSync(req.body.password, logTraveler.password) === true) {
+
+			req.session.travelerId = logTraveler._id
+			req.session.email = logTraveler.email
+			req.session.loggedIn = true
+			req.session.traveler = true
+
+			res.redirect('/traveler/' + logTraveler.id)
+
+		} else {
+			res.redirect('/traveler/login')
+		}
+
 	} else {
-		res.redirect('/traveler/' + logTraveler.id)
+		res.redirect('/traveler/login')
 	}
 })
 
@@ -39,13 +50,19 @@ router.get('/register', async (req, res, next) => {
 })
 
 router.post('/register', async (req, res, next) => {
+
+	const password = req.body.password
+	const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+	req.body.password = hashedPassword
 	
 	try {
+
 		
-		const createdTraveler = await Traveler.create({
-			email: req.body.email,
-			password: req.body.password
-		})
+		const createdTraveler = await Traveler.create(req.body)
+
+		req.session.travelerId = createdTraveler._id
+		req.session.email = createdTraveler.email
+		req.session.loggedIn = true
 
 		console.log(createdTraveler);
 
@@ -60,24 +77,26 @@ router.post('/register', async (req, res, next) => {
 router.get('/:id/new', async (req, res, next) => {
 
 	try {
-		const foundTraveler = await Traveler.findById(req.params.id)
-		// const foundPolicy = await Policy.find({flightInfo.number: req.query.number})
-		console.dir(foundPolicy);
+		if (req.session.loggedIn === true) {
+			const foundTraveler = await Traveler.findById(req.params.id)
+			// const foundPolicy = await Policy.find({flightInfo.number: req.query.number})
+			console.dir(foundPolicy);
 
-		const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
-		superagent.get(url).end((error, response) => {
-			if (error) next (error)
-			else {
-				const dataAsObj = JSON.parse(response.text)
+			const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
+			superagent.get(url).end((error, response) => {
+				if (error) next (error)
+				else {
+					const dataAsObj = JSON.parse(response.text)
 
-				// res.send(dataAsObj)
+					// res.send(dataAsObj)
 
-				res.render('traveler/new.ejs', {
-					traveler: foundTraveler,
-					flightData: dataAsObj
-				})
-			}
-		})
+					res.render('traveler/new.ejs', {
+						traveler: foundTraveler,
+						flightData: dataAsObj
+					})
+				}
+			})
+		}
 
 	} catch (err) {
 		next(err)
@@ -89,11 +108,13 @@ router.get('/:id/new', async (req, res, next) => {
 router.get('/:id/findflights', async (req, res, next) => {
 
 	try {
-		const foundTraveler = await Traveler.findById(req.params.id)
+		if (req.session.loggedIn === true) {
+			const foundTraveler = await Traveler.findById(req.params.id)
 
-		res.render('traveler/home.ejs', {
-			traveler: foundTraveler
-		})
+			res.render('traveler/home.ejs', {
+				traveler: foundTraveler
+			})
+		}
 
 	} catch (err) {
 		next(err)
@@ -104,17 +125,17 @@ router.get('/:id/findflights', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 
 	try {
-
-		const foundTraveler = await Traveler.findById(req.params.id)
-		console.log(foundTraveler);
-		res.render('traveler/show.ejs', {
-			traveler: foundTraveler
-		})
+		if (req.session.loggedIn === true) {
+			const foundTraveler = await Traveler.findById(req.params.id)
+			console.log(foundTraveler);
+			res.render('traveler/show.ejs', {
+				traveler: foundTraveler
+			})
+		}
 
 	} catch (err) {
 		next(err)
 	}
-
 
 })
 
