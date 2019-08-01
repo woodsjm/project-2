@@ -33,7 +33,7 @@ router.post('/login', async (req, res, next) => {
 
         console.log(req.session);
 
-        res.redirect('/investor/show/' + logInvestor.id)
+        res.redirect('/investor/' + logInvestor.id)
 
       } else {
         res.redirect('/investor/login')
@@ -81,7 +81,7 @@ router.post('/new', async (req, res, next) => {
       req.session.loggedIn = true
       req.session.investor = true
 
-      res.redirect('/investor/show/' + createdInvestor.id);
+      res.redirect('/investor/' + createdInvestor.id);
 
     } catch (err) {
       next(err)
@@ -124,7 +124,7 @@ router.put('/:id', async (req, res, next) => {
     const updatedInvestor = await Investor.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
     
-    res.redirect('/investor/show/' + updatedInvestor.id);
+    res.redirect('/investor/' + updatedInvestor._id);
   } catch (err) {
     next(err)
   }
@@ -132,7 +132,7 @@ router.put('/:id', async (req, res, next) => {
 
 
 //Show Investor Route
-router.get('/show/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
 
     if (req.session.investor == true) {
