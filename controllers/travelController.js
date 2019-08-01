@@ -96,12 +96,13 @@ router.get('/:id/new', async (req, res, next) => {
 			if (foundPolicy !== null) {
 
 				const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.number}`
+
 				superagent.get(url).end((error, response) => {
+					
 					if (error) next (error)
 					else {
 						const dataAsObj = JSON.parse(response.text)
 						console.log(dataAsObj, "<-- dataAsObj");
-
 
 						res.render('traveler/new.ejs', {
 							traveler: foundTraveler,
@@ -113,7 +114,6 @@ router.get('/:id/new', async (req, res, next) => {
 				})
 
 			} else {
-
 				req.session.message = "That flight is not covered by Flight Delay"
 				res.redirect('/traveler/' + foundTraveler._id + '/findflights')
 			}
@@ -149,10 +149,16 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
+			console.log('=========================');
 			console.log(foundTraveler);
+			console.log('=========================');
+
 			res.render('traveler/show.ejs', {
-				traveler: foundTraveler,
+				traveler: foundTraveler
 			})
+
+		} else {
+			res.send('Currently do not have any policies')
 		}
 
 	} catch (err) {

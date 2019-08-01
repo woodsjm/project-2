@@ -7,7 +7,13 @@ const travelerSchema = new mongoose.Schema({
 		type: String,
 		enum: ['traveler']
 	},
-	products: []
+	products: [],
+	flights: [Object]
+	// {
+	// 	departureIata: String,
+	// 	departureTime: String,
+	// 	flightNumber: String
+	// }
 })
 
 const Traveler = mongoose.model('Traveler', travelerSchema)

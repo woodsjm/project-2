@@ -6,6 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/travel.css">
 	<title>Traveler Create Page</title>
 </head>
 <body>
@@ -13,9 +14,8 @@
 	<h1>Traveler Create Page</h1>
 
 	<div>
-		<p><%=flightData[0].flightNumber%></p>
-		<p><%=flightData[0].departureIata%></p>
-		<p><%=flightData[0].departureTime%></p>
+		<div>Flight: United Airlines (UA<%=flightData[0].flightNumber%>)</div>
+		<div>Departing from: <%=flightData[0].departureIata%> at <%=flightData[0].departureTime%></div>
 	</div>
 
 
