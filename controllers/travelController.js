@@ -82,24 +82,28 @@ router.get('/:id/new', async (req, res, next) => {
 			const foundTraveler = await Traveler.findById(req.params.id)
 			const allPolicies = await Policy.find({})
 			const foundPolicy = await Policy.findOne({number: req.query.number})
+			console.log(foundPolicy, '<-- foundPolicy');
+			console.log(allPolicies, '<-- allPolicies');
 
-			if (foundPolicy) {
+			if (foundPolicy.number == req.query.number) {
 
-				const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
-				superagent.get(url).end((error, response) => {
-					if (error) next (error)
-					else {
-						const dataAsObj = JSON.parse(response.text)
+				// const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
+				// superagent.get(url).end((error, response) => {
+				// 	if (error) next (error)
+				// 	else {
+						// const dataAsObj = JSON.parse(response.text)
+						// console.log(dataAsObj, "<-- dataAsObj");
 
 						// res.send(dataAsObj)
 
 						res.render('traveler/new.ejs', {
 							traveler: foundTraveler,
 							policies: allPolicies,
-							flightData: dataAsObj
+							policy: foundPolicy
+							// flightData: dataAsObj
 						})
-					}
-				})
+					// }
+				// })
 
 			} else {
 				res.send('That flight does not have a policy')
