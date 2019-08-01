@@ -13,6 +13,7 @@ const PORT           = 3000
 require('./db/db')
 
 
+
 // ------ MIDDLEWARE ------ //
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
@@ -35,7 +36,10 @@ app.use('/traveler', travelController)
 const bondController = require('./controllers/bondController')
 app.use('/bonds', bondController)
 
-// TESTING API CODE
+
+app.use(express.static('public'));
+
+
 app.get('/', (req, res, next) => {
   const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=1015`
   console.dir(url);
