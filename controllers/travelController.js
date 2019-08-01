@@ -88,7 +88,7 @@ router.get('/:id/new', async (req, res, next) => {
 			console.log(foundPolicy, '<-- foundPolicy');
 			console.log(allPolicies, '<-- allPolicies');
 
-			if (foundPolicy.number == 1) {
+			if (foundPolicy.number == req.query.number) {
 
 				// const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
 				// superagent.get(url).end((error, response) => {
