@@ -81,7 +81,7 @@ router.get('/:id/new', async (req, res, next) => {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
 			const allPolicies = await Policy.find({})
-			const foundPolicy = await Policy.findOne({number: req.query.number})
+			const foundPolicy = await Policy.findOne(number: req.query.number)
 			console.log(foundPolicy, '<-- foundPolicy');
 			console.log(allPolicies, '<-- allPolicies');
 
