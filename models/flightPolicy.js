@@ -1,10 +1,8 @@
 const mongoose = require('mongoose')
 
 const flightPolicySchema = new mongoose.Schema({
-	flightInfo: {
-		number: Number,
-		departureDate: Date
-	}, 
+	number: Number,
+	departureDate: Date, 
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Investor'
