@@ -12,6 +12,8 @@ const PORT = 3000
 require('./db/db')
 
 
+app.use(express.static('CSS'));
+
 // ------ MIDDLEWARE ------ //
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
