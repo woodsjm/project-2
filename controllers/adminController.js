@@ -76,7 +76,9 @@ router.get('/register', (req, res, next) => {
 		if (req.session.loggedIn === true) {
 			res.render('admin/register.ejs')
 		} else {
-			req.session.message = "Must be logged in to register a new administrative account"
+			// req.session.message = "Must be logged in to register a new administrative account"
+
+			console.log('must be logged in to do that');
 
 			res.redirect('/admin/login')
 		}
@@ -115,7 +117,11 @@ router.post('/register', async (req, res, next) => {
 // NEW BOND PAGE ROUTE
 router.get('/newbond', async (req, res, next) => {
 	try {
-		res.render('admin/new-bonds.ejs')
+		if (req.session.admin === true) {
+			res.render('admin/new-bonds.ejs')
+		} else {
+			res.send('You are not an administrator')
+		}
 
 	} catch (err) {
 		next(err)
@@ -148,10 +154,14 @@ router.post('/', async (req, res, next) => {
 router.get('/newpolicy', async (req, res, next) => {
 
 	try {
-		const allBonds = await Bond.find({})
-		res.render('admin/new-policy.ejs', {
-			bonds: allBonds
-		})
+		if (req.session.admin === true) {
+			const allBonds = await Bond.find({})
+			res.render('admin/new-policy.ejs', {
+				bonds: allBonds
+			})
+		} else {
+			res.send('You are not an administrator')
+		}
 	} catch (err) {
 		next(err)
 	}
@@ -185,11 +195,15 @@ router.post('/newpolicy/create', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
 	
 	try {
-		const allBonds = await Bond.find({})
+		if (req.session.admin === true) {
+			const allBonds = await Bond.find({})
 
-		res.render('admin/show.ejs', {
-			bonds: allBonds
-		})
+			res.render('admin/show.ejs', {
+				bonds: allBonds
+			})
+		} else {
+			res.send('You are not an administrator')
+		}
 
 	} catch (err) {
 		next(err)
