@@ -84,11 +84,11 @@ router.get('/:id/new', async (req, res, next) => {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
 			const allPolicies = await Policy.find({})
-			const foundPolicy = await Policy.findOne(number: req.query.number)
+			const foundPolicy = await Policy.findOne({number: req.query.number})
 			console.log(foundPolicy, '<-- foundPolicy');
 			console.log(allPolicies, '<-- allPolicies');
 
-			if (foundPolicy.number == 1) {
+			if (foundPolicy.number == req.query.number) {
 
 				// const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
 				// superagent.get(url).end((error, response) => {
