@@ -17,8 +17,9 @@
 	<%=policy.number%>
 
 
-	<form method="GET" action="/traveler/<%=traveler._id%>">
-		
+	<form method="POST" action="/policy?_method=PUT">
+		<input type="hidden" name="travelerId" value="<%=traveler._id%>">
+    <input type="hidden" name="policyId" value="<%=policy._id%>">
 		<button>Purchase</button>
 
 	</form>

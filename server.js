@@ -36,6 +36,9 @@ app.use('/traveler', travelController)
 const bondController = require('./controllers/bondController')
 app.use('/bonds', bondController)
 
+const policyController = require('./controllers/policyController')
+app.use('/policy', policyController)
+
 
 app.use(express.static('public'));
 

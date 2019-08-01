@@ -16,8 +16,13 @@
 
 	<%if (!traveler.products) {%>
 		<p>You have no flights</p>
-	<%}%>
-
+	<%} else {%>
+    <ul>
+      <%for (let i = 0; i < traveler.products.length; i++) {%>
+        <li><%=traveler.products[i].number%></li>
+      <%}%>
+    </ul>
+  <%}%>
 	<a href="/traveler/<%=traveler._id%>/findflights">Search for flights</a>
 
 	<form method="POST" action="/traveler/logout">
