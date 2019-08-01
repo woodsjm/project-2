@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcryptjs')
 const Admin = require('../models/admin')
 const Bond = require('../models/bonds')
 const Policy = require('../models/flightPolicy')
@@ -20,17 +21,48 @@ router.get('/login', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
 	
 	try {
-		console.log(req.body);
-		const foundAdmin = await Admin.find({username: req.body.username})
-		console.log(foundAdmin);
 
-		if (!foundAdmin) {
-			console.log('You are not an administrator');
+		const foundAdmin = await Admin.findOne({username: req.body.username})
+		console.log('-------------');
+		console.log(foundAdmin, '<--- foundAdmin');
+		console.log('-------------');
+
+
+		if (foundAdmin) {
+
+			if (bcrypt.compareSync(req.body.password, foundAdmin.password) === true) {
+				req.session.adminId = foundAdmin._id
+				req.session.username = foundAdmin.username
+				req.session.loggedIn = true
+				req.session.admin = true
+
+				res.redirect('/admin')
+
+			} else {
+				console.log('you are not an administrator');
+
+				res.redirect('/admin/login')
+			}
+
+		} else {
+			console.log('you are not an administrator');
 
 			res.redirect('/admin/login')
-		} else {
-			res.redirect('/admin')
 		}
+
+	} catch (err) {
+		next(err)
+	}
+})
+
+// LOGOUT ROUTE
+router.get('/logout', (req, res, next) => {
+	try {
+
+		req.session.destroy()
+		console.log('See you next time')
+
+		res.redirect('/admin/login')
 
 	} catch (err) {
 		next(err)
@@ -41,20 +73,37 @@ router.post('/login', async (req, res, next) => {
 router.get('/register', (req, res, next) => {
 	
 	try {
-		res.render('admin/register.ejs')
+		if (req.session.loggedIn === true) {
+			res.render('admin/register.ejs')
+		} else {
+			req.session.message = "Must be logged in to register a new administrative account"
+
+			res.redirect('/admin/login')
+		}
 	} catch (err) {
 		next(err)
 	}
 })
 
 router.post('/register', async (req, res, next) => {
+
+	const password = req.body.password;
+
+	const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+	console.log(hashedPassword, '<-- hashedPassword');
+
+	req.body.password = hashedPassword
+	console.log(req.body.password);
 	
 	try {
 
-		const createdAdmin = await Admin.create({
-			username: req.body.username,
-			password: req.body.password
-		})
+		const createdAdmin = await Admin.create(req.body)
+		console.log(createdAdmin);
+
+		req.session.userId = createdAdmin._id
+		req.session.username = createdAdmin.username
+		req.session.loggedIn = true
+		req.session.admin = true
 
 		res.redirect('/admin')
 
@@ -66,7 +115,6 @@ router.post('/register', async (req, res, next) => {
 // NEW BOND PAGE ROUTE
 router.get('/newbond', async (req, res, next) => {
 	try {
-
 		res.render('admin/new-bonds.ejs')
 
 	} catch (err) {
