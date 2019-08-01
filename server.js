@@ -12,7 +12,6 @@ const PORT = 3000
 require('./db/db')
 
 
-app.use(express.static('CSS'));
 
 // ------ MIDDLEWARE ------ //
 app.use(bodyParser.urlencoded({extended: false}))
@@ -36,6 +35,7 @@ app.use('/traveler', travelController)
 const bondController = require('./controllers/bondController')
 app.use('/bonds', bondController)
 
+app.use(express.static('public'));
 
 app.get('/', (req, res, next) => {
   //const url = `https://api.openweathermap.org/data/2.5/weather?zip=60601&units=imperial&appid=${process.env.API_KEY}`
