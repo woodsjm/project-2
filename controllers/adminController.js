@@ -73,7 +73,7 @@ router.get('/logout', (req, res, next) => {
 router.get('/register', (req, res, next) => {
 	
 	try {
-<<<<<<< HEAD
+
 		// if (req.session.loggedIn === true) {
 			res.render('admin/register.ejs')
 		// } else {
@@ -83,18 +83,7 @@ router.get('/register', (req, res, next) => {
 
 			// res.redirect('/admin/login')
 		// }
-=======
-		//if (req.session.loggedIn === true) {
-			res.render('admin/register.ejs')
-			//console.log('register new admin')
-		// } else {
-		// 	// req.session.message = "Must be logged in to register a new administrative account"
 
-		// 	console.log('must be logged in to do that');
-
-			//res.redirect('/admin/login')
-		//}
->>>>>>> 75137663ef0d2329400e10eb392195f1b1779e10
 	} catch (err) {
 		next(err)
 	}
