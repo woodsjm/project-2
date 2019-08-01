@@ -77,6 +77,9 @@ router.post('/register', async (req, res, next) => {
 // NEW ROUTE -- see flights to buy
 router.get('/:id/new', async (req, res, next) => {
 
+	console.log(req.body, '<--- req.body');
+	console.log(req.query, '<--- req.query');
+
 	try {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
@@ -85,7 +88,7 @@ router.get('/:id/new', async (req, res, next) => {
 			console.log(foundPolicy, '<-- foundPolicy');
 			console.log(allPolicies, '<-- allPolicies');
 
-			if (foundPolicy.number == req.query.number) {
+			if (foundPolicy.number == 1) {
 
 				// const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.flight}`
 				// superagent.get(url).end((error, response) => {

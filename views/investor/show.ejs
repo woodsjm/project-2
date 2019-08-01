@@ -33,7 +33,7 @@
       <%if (bonds[i].issued === true && bonds[i].user == investor.id) {%>
         <li><%=bonds[i]%></li>
         <form method="POST" action="/bonds/<%=bonds[i]._id%>?_method=DELETE">
-          <button>Delete</button>
+          <button>Trade</button>
         </form>
       <%}%>
      <%}%>
