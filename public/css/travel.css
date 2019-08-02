@@ -66,6 +66,12 @@ button:hover {
   align-self: center;
 }
 
+/*------LOGIN PAGE-----*/
+.login-home-button {
+  border: none;
+  width: 250px;
+}
+
 /*------HOME PAGE------*/
 .form-field-home {
   max-width: 70%;

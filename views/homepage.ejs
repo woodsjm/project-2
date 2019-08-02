@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        
+        <title>Home Page</title>
+        <link rel="stylesheet" type="text/css" href="/css/homepage.css">
     </head>
     <body>
-      
-        <h1>Home Page</h1>
 
-        <a href="/traveler/login">Traveler</a><br/>
-        <a href="/investor/login">Investor</a><br/>
-        <a href="/admin/login">Admin</a><br/>
+    	<div class="home-page">
+    		<div class="title">
+		        <h1>Home Page</h1>
+    		</div>
+
+    		<div class="allHomeButtons">
+	    		<form method="GET" action="/traveler/login">
+	    			<button class="homepage-button">Traveler</button>
+	    		</form>
+
+	    		<form method="GET" action="/investor/login">
+	    			<button class="homepage-button">Investor</button>
+	    		</form>
+
+	    		<form method="GET" action="/admin/login">
+	    			<button class="homepage-button">Admin</button>
+	    		</form>
+    			
+    		</div>
+    	</div>
 
     </body>
   
