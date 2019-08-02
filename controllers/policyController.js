@@ -13,9 +13,6 @@ router.put('/', async (req, res, next) => {
 
 		const response = await superagent.get(url)
 
-		console.log("unparsed RESPONSE:")
-		console.log(response)
-
 		const dataAsObj = JSON.parse(response.text)
 
 		console.log('=============');
