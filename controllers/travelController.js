@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs')
 // LOGIN ROUTE
 router.get('/login', async (req, res, next) => {
 	res.render('traveler/login.ejs', {
-		message: req.session.message
+		invalid: req.session.invalid
 	})
 })
 
@@ -30,14 +30,14 @@ router.post('/login', async (req, res, next) => {
 
 		} else {
 
-			req.session.message = "Incorrect username or password"
+			req.session.invalid = "Incorrect username or password"
 
 			res.redirect('/traveler/login')
 		}
 
 	} else {
 
-		req.session.message = "Incorrect username or password"
+		req.session.invalid = "Incorrect username or password"
 
 		res.redirect('/traveler/login')
 	}

@@ -11,19 +11,36 @@
 </head>
 <body>
 
-	<h1>Traveler Create Page</h1>
+	<div class="page">
+		<div class="title">
+			<h1>Traveler Create Page</h1>
+		</div>
 
-	<div>
-		<div>Flight: United Airlines (UA<%=flightData[0].flightNumber%>)</div>
-		<div>Departing from: <%=flightData[0].departureIata%> at <%=flightData[0].departureTime%></div>
+		<div class="form-field-new">
+			<div class="newFlightInfo">
+				<div>Flight: United Airlines (UA<%=flightData[0].flightNumber%>)</div>
+				<div>Departing from: <%=flightData[0].departureIata%> at <%=flightData[0].departureTime%></div>
+				<img class="plane" src="https://icon-library.net/images/airplane-icon-png/airplane-icon-png-23.jpg">
+			</div>
+
+			<div class="policy-new">
+            	<p class="money-desc-new">PAY</p>
+                <p class="money-desc-new">GET</p>
+                <div class="money-new">$5</div>
+                <div class="money-new">$30</div>
+            </div>
+
+			<div class="purchaseDiv">
+				<form class="purchaseForm" method="POST" action="/policy?_method=PUT">
+					<input type="hidden" name="travelerId" value="<%=traveler._id%>">
+				    <input type="hidden" name="policyId" value="<%=policy._id%>">
+					<button class="purchaseButton">Purchase</button>
+				</form>
+			</div>
+		</div>
+
 	</div>
 
-
-	<form method="POST" action="/policy?_method=PUT">
-		<input type="hidden" name="travelerId" value="<%=traveler._id%>">
-	    <input type="hidden" name="policyId" value="<%=policy._id%>">
-		<button>Purchase</button>
-	</form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

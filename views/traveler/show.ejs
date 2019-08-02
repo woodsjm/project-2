@@ -6,33 +6,52 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/travel.css">
 	<title>Traveler Show Page</title>
 </head>
 <body>
+	<div class="page">
+		<div class="title">
+			<h1>Traveler Show Page</h1>
+		</div>
 
-	<h1>Traveler Show Page</h1>
+		<h2>Your Flights/Policies</h2>
 
-	<h2>Your Flights/Policies</h2>
+		<%if (!traveler.products) {%>
+			<div class="noProducts">You have no flights</div>
+		<%} else {%>
+			<div class="all-products">
+	            <%for (let i = 0; i < traveler.products.length; i++) {%>
+	            	<div class="flight-info">
+	                    <div id="flight-num">Flight: United Airlines (UA<%=traveler.flights[i].flightNum%>)</div>
+	                    <div id="dep-info">Departing from: <%=traveler.flights[i].depAirport%> at <%=traveler.flights[i].depTime%></div>
+	                    <div class="policy">
+	                    	<p class="money-desc">PAY</p>
+		                    <p class="money-desc">GET</p>
+		                    <div class="money">$5</div>
+		                    <div class="money">$30</div>
+	                    </div>
+	            	</div>
+	            <%}%>
+			</div>
+		<%}%>
 
-	 <%if (!traveler.products) {%>
-		<p>You have no flights</p>
-	<%} else {%>
+		<div class="show-nav">
+			<form class="show-forms" method="GET" action="/traveler/<%=traveler._id%>/findflights">
+				<div class="show-button">
+					<button>Search for flights</button>
+				</div>
+			</form>
 
-		<ul>
-            <%for (let i = 0; i < traveler.products.length; i++) {%>
-                <li>
-                    <div>Flight: United Airlines (UA<%=traveler.flights[i].flightNum%>)</div>
-                    <div>Departing from: <%=traveler.flights[i].depAirport%> at <%=traveler.flights[i].depTime%></div>
-                </li>
-            <%}%>
-        </ul>
-	<%}%>
+			<form class="show-forms" method="POST" action="/traveler/logout">
+				<div class="show-button">
+					<button>Logout</button>
+				</div>
+			</form>
+		</div>
+		
+	</div>
 
-	<a href="/traveler/<%=traveler._id%>/findflights">Search for flights</a>
-
-	<form method="POST" action="/traveler/logout">
-		<button>Logout</button>
-	</form>
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

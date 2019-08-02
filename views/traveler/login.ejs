@@ -10,21 +10,26 @@
 	<title>Traveler Login Page</title>
 </head>
 <body>
+	<div class="page">
+		<div class="title">
+			<h1>Traveler Login Page</h1>	
+		</div>
 
-	<h1>Traveler Login Page</h1>
+		<div class="form-field">
+			<form action=/traveler/login method="POST">
+				<div class="container">
+					<span><%=invalid%></span><br/>
 
-	<form action=/traveler/login method="POST">
-		<p>Log in to your account</p>
+					Email: <input type="text" name="email" placeholder="email"><br/>
+					Password: <input type="password" name="password" placeholder="password"><br/>
+					<button>Log In</button>			
+					
+					<a href="/traveler/register">Need an account? Click Here!</a>
+				</div>
+			</form>
+		</div>
+	</div>
 
-		<span><%=message%></span><br/>
-
-		Email: <input type="text" name="email" placeholder="email">
-		Password: <input type="password" name="password" placeholder="password">
-		<button>Log In</button>
-
-		<p><a href="/traveler/register">Need an account? Click Here!</a></p>
-		
-	</form>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
