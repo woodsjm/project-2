@@ -8,43 +8,63 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="/css/investor.css">
-	<title>Investor Show Page</title>
+	<title>Investments Overview</title>
 </head>
 <body>
+  <div class="title">
+	<h1>Investments Overview</h1>
+  </div>
 
-	<h1>Investor Overview Page</h1>
+<div class="box">
+
+  <div class="card">
+    <h4 class="card-header">Current Offering</h4>
+        <ul>
+          <%for (let i = 0; i < bonds.length; i++) {%>
+          <%if (bonds[i].issued === false) {%>
+            <li>
+              <div>
+                <%=bonds[i].bondName.toUpperCase()%> Bond: Par Value of $<%=bonds[i].principle%>, reaching maturity in <%=bonds[i].maturity%> months, and with a monthly coupon of $<%=bonds[i].coupon%>. Created: <%=bonds[i].date.toLocaleString()%>
+              </div>
+            </li>
+            <form action="/bonds?_method=PUT" method="POST">
+              <input type="hidden" name="bondId" value="<%=bonds[i]._id%>" class="action-button">
+              <input type="hidden" name="investorId" value="<%=investor._id%>">
+              <button>Add</button>
+            </form>
 
 
-<h2>Current Offering</h2>
-    <ul>
-      <%for (let i = 0; i < bonds.length; i++) {%>
-      <%if (bonds[i].issued === false) {%>
-        <li><%=bonds[i]%></li>
-        <form action="/bonds?_method=PUT" method="POST">
-          <input type="hidden" name="bondId" value="<%=bonds[i]._id%>">
-          <input type="hidden" name="investorId" value="<%=investor._id%>">
-          <button>Add</button>
-        </form>
-      <%}%>
-     <%}%>
-    </ul>
-  <p>----------------------</p>
-  <h2>Current Portfolio</h2>
-    <ul>
-      <%for (let i = 0; i < bonds.length; i++) {%>
-      <%if (bonds[i].issued === true && bonds[i].user == investor.id) {%>
-        <li><%=bonds[i]%></li>
-        <form method="POST" action="/bonds/<%=bonds[i]._id%>?_method=DELETE">
-          <button>Trade</button>
-        </form>
-      <%}%>
-     <%}%>
-    </ul>
+          <%}%>
+         <%}%>
+        </ul>
+  </div>
+  
+  <div class="card">    
+      <h4 class="card-header">Current Portfolio</h4>
+        <ul>
+          <%for (let i = 0; i < bonds.length; i++) {%>
+          <%if (bonds[i].issued === true && bonds[i].user == investor.id) {%>
+            <li>
+              <div>
+              <%=bonds[i].bondName.toUpperCase()%> Bond: Par Value of $<%=bonds[i].principle%>, reaching maturity in <%=bonds[i].maturity%> months, and with a monthly coupon of $<%=bonds[i].coupon%>. Created: <%=bonds[i].date.toLocaleString()%>
+              </div>
+            </li>
+            
+            <form method="POST" action="/bonds/<%=bonds[i]._id%>?_method=DELETE" class="action-button">
+              <button>Trade</button>
+            </form>
+          
+          <%}%>
+         <%}%>
+        </ul>
+  </div>
+</div><br/>
 
  <!-- && bonds[i].user === investor._id -->
  <!-- bonds[i].issued === true &&  -->
-
-  <a href="/investor/<%=investor._id%>/edit">Edit Account</a>
+<nav>
+  <a href="/investor/<%=investor._id%>/edit" id="edit">Edit Account</a>
+</nav>
 
 
 

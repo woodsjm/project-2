@@ -9,70 +9,31 @@
 
   <link rel="stylesheet" type="text/css" href="/css/investor.css">
 	<title>Investor Login Page</title>
-  <!-- <style>
-  html { 
-  background: url(https://static.wixstatic.com/media/957377_8bcd1948851e4666ab34f3d99bc09014~mv2_d_4000_2666_s_4_2.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-button {
-  background: #0f0c29;
-background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.container {
-  padding: 16px;
-  display: inline-block;
-}
-
-  </style> -->
 </head>
 <body>
 
-  <h1>Investor Login Page</h1>
+<div class="page">
+
+<div class="title">
+  <h1>LOGIN</h1>
+</div>
 
 
+<div class="form-field">
 <form action="/investor/login" method="POST">
   <div class="container">
     Account Email: <input type="text" name="email" placeholder="Email Address"><br />
     Account Password: <input type="password" name="password" placeholder="Password"><br />
+  <a href="/investor/new">Don't Have An Account?</a>
     <button>Login</button>
   </div>
-  <h4>Don't Have An Account?</h4>
-  <a href="/investor/new">REGISTER</a>
 
   </form>
+</div>
 
-  
+</div>
+
 
 
 

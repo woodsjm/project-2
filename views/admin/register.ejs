@@ -6,17 +6,23 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
 	<title>Create Admin Page</title>
 </head>
 <body>
 
-	<h1>Create Admin</h1>
+  <div class="title">
+	<h1>CREATE ADMIN ACCOUNT</h1>
+  </div>
 
-	<form method="POST" action="/admin/register">
+  <div class="form-field">
+	<form method="POST" action="/admin/register" id="form">
 		Username: <input type="text" name="username">
 		Password: <input type="password" name="password">
 		<button>Create Admin</button>
 	</form>
+  </div>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

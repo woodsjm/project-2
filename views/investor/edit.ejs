@@ -12,20 +12,47 @@
 </head>
 <body>
 
-	<h1>Investor Edit Page</h1>
+<div class="title">
+	<h1>EDIT ACCOUNT</h1>
+</div>
 
-  <h2>Email and Password</h2>
-
+  <div class="form-field">
   <form action="/investor/<%=investor._id%>?_method=PUT" method="POST">
+    <div class="container">
+      <h6>Email:</h6>
       <input type="text" name="email" value="<%=investor.email%>"/><br/>
+      <h6>Password:</h6>
       <input type="text" name="password" value="<%=investor.password%>"/><br/>
-      <input type="submit" value="Edit">
-  </form><br />
-
+      <input type="submit" value="Edit" id="edit">
   <form action="/investor/<%=investor._id%>?_method=DELETE" method="POST">
     <button>Delete Account</button>
   </form>
+ 
 
+  </div>
+
+
+
+
+<!-- <div class="page">
+
+  <h1>REGISTRATION</h1>
+</div>
+
+<div class="form-field">
+<form action="/investor/new" method="POST">
+  <div class="container">
+    Email: <input type="text" name="email" placeholder="Email Address"><br />
+    Password: <input type="password" name="password" placeholder="Password"><br />
+  <a href="/investor/login">Already Have An Account?</a>
+    <button>Create</button>
+  </div>
+  </form>
+</div>
+
+
+
+</div> -->
 
 
 
