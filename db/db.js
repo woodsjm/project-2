@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
 
-//const connectionString = 'mongodb://localhost/flight-delay'
+// const connectionString = 'mongodb://localhost/flight-delay'
+
 let connectionString
 
 if (process.env.NODE_ENV == "production") {
-  connectionString = process.env.DB_URL
+	connectionString = process.env.DB_URL
 } else {
-  connectionString = 'mongodb://localhost/flight-delay'
+	connectionString = 'mongodb://localhost/flight-delay'
 }
 
 mongoose.connect(connectionString, {

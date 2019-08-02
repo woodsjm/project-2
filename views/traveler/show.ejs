@@ -14,16 +14,19 @@
 
 	<h2>Your Flights/Policies</h2>
 
-	<%if (!traveler.products) {%>
+	 <%if (!traveler.products) {%>
 		<p>You have no flights</p>
 	<%} else {%>
-    <ul>
-      <%for (let i = 0; i < traveler.products.length; i++) {%>
-        <li><%=traveler.products[i].number%></li>
-      <%}%>
-    </ul>
-  <%}%>
 
+		<ul>
+            <%for (let i = 0; i < traveler.products.length; i++) {%>
+                <li>
+                    <div>Flight: United Airlines (UA<%=traveler.flights[i].flightNum%>)</div>
+                    <div>Departing from: <%=traveler.flights[i].depAirport%> at <%=traveler.flights[i].depTime%></div>
+                </li>
+            <%}%>
+        </ul>
+	<%}%>
 
 	<a href="/traveler/<%=traveler._id%>/findflights">Search for flights</a>
 

@@ -8,7 +8,9 @@ const bcrypt = require('bcryptjs')
 
 // LOGIN ROUTE
 router.get('/login', async (req, res, next) => {
-	res.render('traveler/login.ejs')
+	res.render('traveler/login.ejs', {
+		message: req.session.message
+	})
 })
 
 router.post('/login', async (req, res, next) => {
@@ -27,10 +29,16 @@ router.post('/login', async (req, res, next) => {
 			res.redirect('/traveler/' + logTraveler.id)
 
 		} else {
+
+			req.session.message = "Incorrect username or password"
+
 			res.redirect('/traveler/login')
 		}
 
 	} else {
+
+		req.session.message = "Incorrect username or password"
+
 		res.redirect('/traveler/login')
 	}
 })
@@ -57,7 +65,6 @@ router.post('/register', async (req, res, next) => {
 	req.body.password = hashedPassword
 	
 	try {
-
 		
 		const createdTraveler = await Traveler.create(req.body)
 
@@ -77,27 +84,25 @@ router.post('/register', async (req, res, next) => {
 // NEW ROUTE -- see flights to buy
 router.get('/:id/new', async (req, res, next) => {
 
-	console.log(req.body, '<--- req.body');
-	console.log(req.query, '<--- req.query');
-
 	try {
 		if (req.session.loggedIn === true) {
+
 			const foundTraveler = await Traveler.findById(req.params.id)
 			const allPolicies = await Policy.find({})
 			const foundPolicy = await Policy.findOne({number: req.query.number})
 			console.log(foundPolicy, '<-- foundPolicy');
 			console.log(allPolicies, '<-- allPolicies');
 
-			if (foundPolicy.number == req.query.number) {
+			if (foundPolicy !== null) {
 
 				const url = `http://aviation-edge.com/v2/public/routes?key=${process.env.API_KEY}&departureIata=OTP&departureIcao=LROP&airlineIata=0B&airlineIcao=BMS&flightNumber=${req.query.number}`
+
 				superagent.get(url).end((error, response) => {
+					
 					if (error) next (error)
 					else {
 						const dataAsObj = JSON.parse(response.text)
 						console.log(dataAsObj, "<-- dataAsObj");
-
-						
 
 						res.render('traveler/new.ejs', {
 							traveler: foundTraveler,
@@ -109,7 +114,8 @@ router.get('/:id/new', async (req, res, next) => {
 				})
 
 			} else {
-				res.send('That flight does not have a policy')
+				req.session.message = "That flight is not covered by Flight Delay"
+				res.redirect('/traveler/' + foundTraveler._id + '/findflights')
 			}
 		}
 
@@ -127,7 +133,8 @@ router.get('/:id/findflights', async (req, res, next) => {
 			const foundTraveler = await Traveler.findById(req.params.id)
 
 			res.render('traveler/home.ejs', {
-				traveler: foundTraveler
+				traveler: foundTraveler,
+				message: req.session.message
 			})
 		}
 
@@ -142,10 +149,16 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		if (req.session.loggedIn === true) {
 			const foundTraveler = await Traveler.findById(req.params.id)
+			console.log('=========================');
 			console.log(foundTraveler);
+			console.log('=========================');
+
 			res.render('traveler/show.ejs', {
 				traveler: foundTraveler
 			})
+
+		} else {
+			res.send('Currently do not have any policies')
 		}
 
 	} catch (err) {
