@@ -1,16 +1,28 @@
-html { 
+/*html { 
   background: url(https://static.wixstatic.com/media/957377_8bcd1948851e4666ab34f3d99bc09014~mv2_d_4000_2666_s_4_2.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background: url(https://static.wixstatic.com/media/957377_8bcd1948851e4666ab34f3d99bc09014~mv2_d_4000_2666_s_4_2.jpg) no-repeat center center fixed; 
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
+  background-size: cover;
 }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-form {border: 3px solid #f1f1f1;}
+form {
+  border: 3px solid #f1f1f1;
+  width: 100%;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -23,8 +35,8 @@ input[type=text], input[type=password] {
 
 button {
   background: #0f0c29;
-background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -37,8 +49,28 @@ button:hover {
   opacity: 0.8;
 }
 
+.page {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  max-width: 50%;
+  align-self: center;
+  background-color: #4f5f76;
+}
+
 .container {
   padding: 16px;
   display: inline-block;
+  /*max-width: 50%;*/
+}
+
+
+.title {
+  max-width: 50%;
+  color: white;
+  align-self: center;
 }
 

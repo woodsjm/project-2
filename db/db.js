@@ -10,7 +10,6 @@ if (process.env.NODE_ENV == "production") {
 	connectionString = 'mongodb://localhost/flight-delay'
 }
 
-
 mongoose.connect(connectionString, {
 	useNewUrlParser: true
 })
