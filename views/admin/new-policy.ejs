@@ -11,20 +11,23 @@
 	<title>Admin New Policy</title>
 </head>
 <body>
+  <div class="title">
+	<h1>Create New Policy</h1>
+</div>
 
-	<h1>Create a new policy</h1>
-
+  <div class="alt-card">
 	<form method="POST" action="/admin/newpolicy/create">
 		<p>Flight Info</p>
 		Number: <input type="number" name="number">
 		<!-- Departure Date: <input type="date" name="departureDate"> -->
 		<select name="bondId">
 			<%for (let i = 0; i < bonds.length; i++) {%>
-				<option value="<%=bonds[i]._id%>"><%=bonds[i].bondName%></option>
+				<option value="<%=bonds[i]._id%>"><%=bonds[i].bondName%></option><br/> 
 			<%}%>
 		</select>
-		<button>Create Policy</button>
+		<button id="policy-button">Create Policy</button>
 	</form>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

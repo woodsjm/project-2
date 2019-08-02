@@ -12,17 +12,25 @@
 </head>
 <body>
 
-	<h1>Admin Create Bond Page</h1>
+  <div class="title">
+	<h1>Create New Bond</h1>
+  </div>
 
+  <div class="alt-card">
 	<form method="POST" action="/admin">
+    <div class="container">
 		Bond name: <input type="text" name="bondName" placeholder="bond name">
 		Principle: <input type="number" name="principle">
 		Maturity: <input type="number" name="maturity" placeholder="months">
 		Coupon: <input type="number" name="coupon">
 		<button>Create Bond</button>
+  </div>
 	</form>
+</div>
 
+<div class="navbar">
 	<a href="/admin/newpolicy">Create New Policies</a>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

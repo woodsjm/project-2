@@ -10,31 +10,54 @@
     <link rel="stylesheet" type="text/css" href="/css/admin.css">
 	<title>Admin Show Page</title>
 </head>
+
 <body>
 
+  <div class="title">
 	<h1>Admin Show Page</h1>
+  </div>
 
-  <h2>Bonds Not Yet Issued</h2>
+<div class="box">
+
+  <div class="card">
+  <h4 class="card-header">Bonds Not Yet Issued</h4>
   	<ul>
   		<%for (let i = 0; i < bonds.length; i++) {%>
       <%if (bonds[i].issued === false) {%>
-  			<li><%=bonds[i]%></li>
+  			<li>
+          <div>
+            <%=bonds[i].bondName.toUpperCase()%> Bond: Par Value of $<%=bonds[i].principle%>, reaching maturity in <%=bonds[i].maturity%> months, and with a monthly coupon of $<%=bonds[i].coupon%>. Created: <%=bonds[i].date.toLocaleString()%>
+          </div>   
+        </li>
   		<%}%>
      <%}%>
   	</ul>
-  <p>----------------------</p>
-  <h2>Bonds Already Issued</h2>
+  </div>
+  
+  <div class="card">
+  <h4 class="card-header">Bonds Already Issued</h4>
     <ul>
       <%for (let i = 0; i < bonds.length; i++) {%>
       <%if (bonds[i].issued === true) {%>
-        <li><%=bonds[i]%></li>
+        <li>
+          <div>
+            <%=bonds[i].bondName.toUpperCase()%> Bond: Par Value of $<%=bonds[i].principle%>, reaching maturity in <%=bonds[i].maturity%> months, and with a monthly coupon of $<%=bonds[i].coupon%>. Created: <%=bonds[i].date.toLocaleString()%>
+          </div>
+        </li>
       <%}%>
      <%}%>
     </ul>
+  </div>
 
+  </div>
+
+<div class="navbar">
+  
 	<a href="/admin/newbond">Create new bond</a><br/>
 
 	<a href="/admin/newpolicy">Create new policy</a>
+
+</div>
 
 
 

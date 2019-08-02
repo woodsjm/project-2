@@ -4,12 +4,11 @@ body {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  background-color: #4f5f76;
-  /*background: url(https://webgradients.com/public/webgradients_png/010%20Winter%20Neva.png) no-repeat center center fixed;*/ 
+  background: url(https://static.wixstatic.com/media/957377_8bcd1948851e4666ab34f3d99bc09014~mv2_d_4000_2666_s_4_2.jpg) no-repeat center center fixed; 
   /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;*/
-  /*background-size: cover;*/
+  background-size: cover;
 }
 
 form {
@@ -27,13 +26,15 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background: black;
+  background: #0f0c29;
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width: 100%;
 }
 
 button:hover {
@@ -47,6 +48,13 @@ button:hover {
 }
 
 .form-field {
+  min-width: 100px;
+  max-width: 300px;
+  align-self: center;
+  background-color: #4f5f76;
+}
+
+.alt-card {
   min-width: 100px;
   max-width: 300px;
   align-self: center;
@@ -78,8 +86,152 @@ button:hover {
   width: 100%;
 }
 
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-/*CUSTOM STYLING FOR INVESTOR SHOW PAGE*/
+.card {
+  background-color: #4f5f76;
+  color: white;
+  min-height: 150px;
+  width: 350px; 
+}
+
+
+.navbar {
+  background-color: black;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #2C5364;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background-color: background: #0F2027;
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+}
+
+form {
+  border: 3px solid #f1f1f1;
+  width: 100%;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background: #4f5f76;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.page {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  color: white;
+  min-width: 100px;
+  max-width: 300px;
+  align-self: center;
+  background-color: black;
+}
+
+.alt-card {
+  min-width: 100px;
+  max-width: 300px;
+  align-self: center;
+  background-color: #4f5f76;
+}
+
+.container {
+  padding: 16px;
+  display: inline-block;*/
+  /*max-width: 50%;
+}
+
+
+.title {
+  max-width: 50%;
+  color: white;
+  align-self: center;
+}
+
+.edit {
+  background: #0f0c29;
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
 
 .box {
   display: flex;
@@ -94,8 +246,36 @@ button:hover {
   width: 350px; 
 }
 
-/*CUSTOM STYLING FOR ADMIN PAGES*/
+
+.navbar {
+  background-color: black;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #2C5364;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 
 #form {
   color: white;
 }
+
+#policy-button {
+  background: #2C5364;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}*/
