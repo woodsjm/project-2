@@ -6,23 +6,49 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/travel.css">
 	<title>Traveler Home Page</title>
 </head>
 <body>
 
-	<h1>Traveler Home Page</h1>
+	<div class="page">
+		<div class="home-title">
+			<h1>Flight Delay</h1>
+		</div>
 
-	<span><%=message%></span>
+		<div class=form-field-home>
+			<form method="GET" action="/traveler/<%=traveler._id%>/new">
+				<div class="container">
+					<p>Flying is stressful enough. Why let delayed or cancelled flights give you more? Check to see if your flight is eligible for reinsurance, and get what you deserve.</p>
+					<div class="flightInput">
+						<div class="flightNum">Flight Number:</div>
+						<div class="flightNumInput"><input type="number" name="number"></div>
+						<div class="searchDiv">
+							<button class="searchButton">Search</button>
+						</div>
+					</div>
+					<span class="home-message"><%=message%></span>
+				</div>
+			</form>
 
-	<form method="GET" action="/traveler/<%=traveler._id%>/new">
-		Flight Number: <input type="number" name="number">
-		<!-- Date: <input type="date" name="date"> -->
-		<button>Search</button>
-	</form>
 
-	<form method="POST" action="/traveler/logout">
-		<button>Logout</button>
-	</form>
+		</div>
+		
+			<div class="home-bottom">
+				<!-- <form class="home-forms" method="GET" action="/">
+					<div class="home-buttons">
+						<button>Home Page</button>
+					</div>
+				</form>
+ -->
+				<form class="home-forms" method="POST" action="/traveler/logout">
+					<div class="home-buttons">
+						<button>Logout</button>
+					</div>
+				</form>
+			</div>
+	</div>
+
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,20 +1,18 @@
 
-  html { 
-  /*background: url(https://images.squarespace-cdn.com/content/v1/5522d488e4b05f384d080ecd/1542226501377-YRHE01R6UIIUKWNM9ECW/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/airplane-perito-moreno-glacier.jpg?format=1500w) no-repeat center center fixed;*/
-  background: url(images/airplane-perito-moreno-glacier.jpg);  
+
+body {
+  background: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EPzzjHhuxijr01n5f/4k-traveling-by-airplane-at-sunset-view-from-airplane-window_4dovfi6dl__F0000.png) no-repeat center center fixed;
+  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-}
-
-body {
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 form {
   border: 3px solid #f1f1f1;
+  width: 100%;
 }
 
 input[type=text], input[type=password] {
@@ -32,7 +30,7 @@ button {
   background: -o-linear-gradient(left, #0ED2F7, #B2FEFA);
   background: linear-gradient(to right, #0ED2F7, #B2FEFA);
 
-  color: white;
+  color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -44,8 +42,219 @@ button:hover {
   opacity: 0.8;
 }
 
+.page {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.form-field {
+  max-width: 50%;
+  align-self: center;
+  background-color: #4f5f76;
+}
+
 .container {
   padding: 16px;
   display: inline-block;
 }
+
+.title {
+  max-width: 50%;
+  color: white;
+  align-self: center;
+}
+
+/*------LOGIN PAGE-----*/
+.login-home-button {
+  border: none;
+  width: 250px;
+}
+
+/*------HOME PAGE------*/
+.form-field-home {
+  max-width: 70%;
+  align-self: center;
+  background-color: #4f5f76;
+  color: white;
+}
+
+.home-forms {
+  width: 30%;
+  border: none;
+}
+
+.home-buttons {
+  padding: 16px;
+  display: inline-block;
+}
+
+.home-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-title {
+  max-width: 50%;
+  color: white;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.flightInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.searchButton {
+  margin: 0;
+  padding: 5px;
+}
+
+.searchDiv {
+  width: 25%;
+  height: 35px;
+}
+
+.home-message {
+  margin: 10px 0 0 0;
+  color: red;
+}
+/*------HOME PAGE------*/
+
+
+/*------SHOW PAGE------*/
+
+.flight-info {
+  background-color: #4f5f76;
+  width: 280px;
+  color: white;
+  border: 3px solid #f1f1f1;
+  margin-top: 25px;
+}
+
+#flight-num {
+  margin: 10px 0 0 0;
+}
+
+.all-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.policy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100px;
+  margin: 5px 0 10px 0;
+}
+
+.money {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  font-size: 25px;
+  background-color: rgba(216, 221, 227, .4);
+  border: 2px solid black;
+}
+
+.money-desc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  font-size: 15px;
+  margin: 0;
+}
+
+.show-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.show-forms {
+  border: none;
+  max-width: 200px;
+}
+
+.show-button {
+  padding: 16px;
+  width: 100%;
+}
+
+/*------SHOW PAGE------*/
+
+/*------NEW PAGE------*/
+
+.form-field-new {
+  width: 600px;
+  height: 300px;
+  align-self: center;
+  background-color: #4f5f76;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 3px solid #f1f1f1;
+}
+
+.newFlightInfo {
+  /*margin: 30px 0 0 20px;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.plane {
+  width: 60px;
+  height: 60px;
+  margin: 30px 0 0 0;
+}
+
+.policy-new {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 200px;
+  width: 300px;
+  /*margin: 0 0 0 10px;*/
+}
+
+.money-new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 110px;
+  font-size: 35px;
+  background-color: rgba(216, 221, 227, .4);
+  border: 2px solid black;
+}
+
+.money-desc-new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 45px;
+  font-size: 25px;
+  margin: 0;
+}
+
+.purchaseForm {
+  border: none;
+}
+
+/*------NEW PAGE------*/
+
 
